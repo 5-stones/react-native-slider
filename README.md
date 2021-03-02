@@ -11,7 +11,7 @@ npm install @5stones/react-native-slider
 ## Usage
 
 ```js
-import ReactNativeSlider from "@5stones/react-native-slider";
+import Slider from "@5stones/react-native-slider";
 
 // ...
 
