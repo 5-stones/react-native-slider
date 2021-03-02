@@ -27,7 +27,9 @@
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "prepare": "bob build",
     "version": "npm run changelog && git add CHANGELOG.md",
-    "postversion": "git push && git push --tags",
+    "postversion": "npm run publish:git && npm run publish:npm",
+    "publish:git": "git push && git push --tags",
+    "publish:npm": "npm publish --access public",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
   "keywords": [
