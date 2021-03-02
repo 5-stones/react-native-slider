@@ -1,7 +1,7 @@
 {
   "name": "@5stones/react-native-slider",
   "version": "1.0.0",
-  "description": "A simple react-native slider",
+  "description": "A truly simple react-native slider",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/src/index.d.ts",
