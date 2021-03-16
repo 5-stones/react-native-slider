@@ -37,18 +37,19 @@ const Screen: React.FC = () => {
 
 ## Props
 
-| Name                    | Optional           | Type     | Description |
-|-------------------------|--------------------|----------|-------------|
-| `value`                 | :white_check_mark: | `number` | A numeric value allowing between the `minimumValue` and `maximumValue` allowing you to control the position of the slider. |
-| `onValueChange`         | :white_check_mark: | `(value: number) => void` | A callback function allowing you to receive updates of the slider position. |
-| `thumbSize`             | :white_check_mark: | `number` | Specify the size of the thumb (this is important as it's used to calculate positions). |
-| `minimumValue`          | :white_check_mark: | `number` | The minimum bound of the sliders value. |
-| `maximumValue`          | :white_check_mark: | `number` | The maximum bound of the sliders value. |
-| `defaultContainerWidth` | :white_check_mark: | `number` | A default value for the width of the container (which will get overwritten dynamically after layout). |
-| `containerStyle`        | :white_check_mark: | `ViewStyle` | A style object allowing you control over the container. |
-| `thumbStyle`            | :white_check_mark: | `ViewStyle` | A style object allowing you control over the thumb. |
-| `minimumTrackStyle`     | :white_check_mark: | `ViewStyle` | A style object allowing you control over the minimum track. |
-| `maximumTrackStyle`     | :white_check_mark: | `ViewStyle` | A style object allowing you control over the maximum track. |
+| Name                      | Optional           | Type     | Description |
+|---------------------------|--------------------|----------|-------------|
+| `value`                   | :white_check_mark: | `number` | A numeric value allowing between the `minimumValue` and `maximumValue` allowing you to control the position of the slider. |
+| `onValueChange`           | :white_check_mark: | `(value: number) => void` | A callback function allowing you to receive updates of the slider position. |
+| `thumbSize`               | :white_check_mark: | `number` | Specify the size of the thumb (this is important as it's used to calculate positions). |
+| `minimumValue`            | :white_check_mark: | `number` | The minimum bound of the sliders value. |
+| `maximumValue`            | :white_check_mark: | `number` | The maximum bound of the sliders value. |
+| `defaultContainerWidth`   | :white_check_mark: | `number` | A default value for the width of the container (which will get overwritten dynamically after layout).  |
+| `touchableContainerStyle` | :white_check_mark: | `ViewStyle` | A style object allowing you control over the touch target container. |
+| `containerStyle`          | :white_check_mark: | `ViewStyle` | A style object allowing you control over the container. |
+| `thumbStyle`              | :white_check_mark: | `ViewStyle` | A style object allowing you control over the thumb. |
+| `minimumTrackStyle`       | :white_check_mark: | `ViewStyle` | A style object allowing you control over the minimum track. |
+| `maximumTrackStyle`       | :white_check_mark: | `ViewStyle` | A style object allowing you control over the maximum track. |
 
 ## Release
 
