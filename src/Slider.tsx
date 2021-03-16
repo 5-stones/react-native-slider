@@ -17,6 +17,7 @@ export interface SliderProps {
   minimumValue?: number;
   maximumValue?: number;
   defaultContainerWidth?: number;
+  touchableContainerStyle?: ViewStyle;
   containerStyle?: ViewStyle;
   thumbStyle?: ViewStyle;
   minimumTrackStyle?: ViewStyle;
@@ -30,6 +31,7 @@ export const Slider: React.FC<SliderProps> = ({
   minimumValue = 0,
   maximumValue = 1,
   defaultContainerWidth = 200,
+  touchableContainerStyle = {},
   containerStyle = {},
   thumbStyle = {},
   minimumTrackStyle = {},
@@ -117,22 +119,47 @@ export const Slider: React.FC<SliderProps> = ({
       })}
     >
       <Animated.View
-        style={[dynamicStyles.container(thumbRadius), containerStyle]}
-        onLayout={onLayoutContainer}
+        style={[styles.touchableContainerStyle, touchableContainerStyle]}
       >
         <Animated.View
-          style={[styles.maximumTrack, maximumTrackStyle]}
-          onLayout={onLayoutTrack}
+          style={[dynamicStyles.container(thumbRadius), containerStyle]}
+          onLayout={onLayoutContainer}
         >
           <Animated.View
+            style={[styles.maximumTrack, maximumTrackStyle]}
+            onLayout={onLayoutTrack}
+          >
+            <Animated.View
+              style={[
+                dynamicStyles.minimumTrack(thumbRadius, trackSize.width),
+                minimumTrackStyle,
+                {
+                  transform: [
+                    {
+                      translateX: touchX.interpolate({
+                        inputRange: [0, containerWidth],
+                        outputRange: [0, containerWidth],
+                        extrapolate: 'clamp',
+                      }),
+                    },
+                  ],
+                },
+              ]}
+            />
+          </Animated.View>
+
+          <Animated.View
             style={[
-              dynamicStyles.minimumTrack(thumbRadius, trackSize.width),
-              minimumTrackStyle,
+              dynamicStyles.thumb(thumbRadius, trackSize.height),
+              thumbStyle,
               {
                 transform: [
                   {
-                    translateX: touchX.interpolate({
-                      inputRange: [0, containerWidth],
+                    translateX: Animated.add(
+                      touchX,
+                      new Animated.Value(-thumbRadius)
+                    ).interpolate({
+                      inputRange: [-thumbRadius, containerWidth - thumbRadius],
                       outputRange: [0, containerWidth],
                       extrapolate: 'clamp',
                     }),
@@ -142,27 +169,6 @@ export const Slider: React.FC<SliderProps> = ({
             ]}
           />
         </Animated.View>
-
-        <Animated.View
-          style={[
-            dynamicStyles.thumb(thumbRadius, trackSize.height),
-            thumbStyle,
-            {
-              transform: [
-                {
-                  translateX: Animated.add(
-                    touchX,
-                    new Animated.Value(-thumbRadius)
-                  ).interpolate({
-                    inputRange: [-thumbRadius, containerWidth - thumbRadius],
-                    outputRange: [0, containerWidth],
-                    extrapolate: 'clamp',
-                  }),
-                },
-              ],
-            },
-          ]}
-        />
       </Animated.View>
     </PanGestureHandler>
   );
@@ -199,6 +205,10 @@ const dynamicStyles = {
 };
 
 const styles = StyleSheet.create({
+  touchableContainerStyle: {
+    // default a minimum of 20px vertical height for the touch target
+    paddingVertical: 10,
+  },
   maximumTrack: {
     width: '100%',
     alignSelf: 'center',
