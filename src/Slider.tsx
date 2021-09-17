@@ -86,7 +86,7 @@ export const Slider: React.FC<SliderProps> = ({
     minVal: number
   ): number => {
     const ratio = position / containerWidth;
-    const val = ratio * (maxVal - minVal);
+    const val = ratio * (maxVal - minVal) + minVal;
     return getBoundedValue(val, maxVal, minVal);
   };
 
