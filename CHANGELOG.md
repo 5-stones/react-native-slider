@@ -1,3 +1,12 @@
+## [1.1.1](https://github.com/5-stones/react-native-slider/compare/v1.1.0...v1.1.1) (2021-09-17)
+
+
+### Bug Fixes
+
+* **slider:** fix an issue with relative position caused by non-zero minimum values ([59c439e](https://github.com/5-stones/react-native-slider/commit/59c439eff2b6f3b68100b3ab820cf805300ea16a))
+
+
+
 # [1.1.0](https://github.com/5-stones/react-native-slider/compare/v1.0.0...v1.1.0) (2021-03-16)
 
 
